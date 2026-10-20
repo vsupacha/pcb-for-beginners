@@ -1,0 +1,6 @@
+Net,Net_class,Design_current_A,Copper_thickness_um,Layer,Temperature_rise_C,Calculation_method,Selected_width_mm,Clearance_mm,Source_URL,Reason,Verification
+VIN_RAW,POWER,,,,,,,,,,
+VIN_LDO,POWER,,,,,,,,,,
++3V3,POWER,,,,,,,,,,
+GND,POWER,,,,,,,,,,
+LED_A,INDICATOR,,,,,,,,,,

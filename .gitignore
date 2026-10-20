@@ -1,0 +1,22 @@
+/.quarto/
+/_site/
+/.cache/
+__pycache__/
+.DS_Store
+Thumbs.db
+*.quarto_ipynb
+*-backups/
+*.lck
+*.kicad_prl
+/submissions/
+
+# Local working notes and reusable authoring guides belong outside this repo.
+/skills.md
+/DEVELOPMENT.md
+/history.md
+/history-*.md
+/summary.md
+/backup/
+/project-support/
+
+**/*.quarto_ipynb

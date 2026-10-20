@@ -1,0 +1,50 @@
+---
+title: "แหล่งอ้างอิง"
+---
+
+## ลำดับการใช้หลักฐาน
+
+ข้อกำหนดคอร์สบอกว่าเราต้องทำอะไร Datasheet ของอุปกรณ์จริงบอกเงื่อนไขใช้งานและขนาด ส่วนคู่มือ KiCad บอกวิธีใช้เครื่องมือ ข้อจำกัดการผลิตต้องตรวจจากผู้ผลิต PCB/ผู้ประกอบที่เลือก คลิปและ reference design ใช้เป็นตัวอย่างที่ต้องตรวจความเหมาะสมกับโจทย์อีกครั้ง
+
+## เครื่องมือ
+
+- [KiCad Download](https://www.kicad.org/download/)
+- [Getting Started in KiCad 10](https://docs.kicad.org/10.0/en/getting_started_in_kicad/getting_started_in_kicad.html)
+- [Schematic Editor 10](https://docs.kicad.org/10.0/en/eeschema/eeschema.html)
+- [PCB Editor 10](https://docs.kicad.org/10.0/en/pcbnew/pcbnew.html)
+- [Calculator Tools 10](https://docs.kicad.org/10.0/en/pcb_calculator/pcb_calculator.html)
+- [Arduino hardware documentation](https://docs.arduino.cc/): เลือกรุ่นบอร์ดจริงก่อนใช้ pinout หรือ drawing
+
+## Package และ footprint
+
+- [คู่มือ package/footprint ของคอร์ส](footprints.qmd): 0402, 0603, 0805, 1206, SOT-23, SOT-223, SOIC-8 และ header พร้อมลิงก์ภาพ/drawing
+- [KiCad Library Conventions](https://klc.kicad.org/): รหัส imperial/metric และแนวการตั้งชื่อ
+- [Vishay resistor size family](https://www.vishay.com/en/product/28700/): ตัวอย่างอุปกรณ์จริงและ datasheet
+- [Nexperia package information](https://www.nexperia.com/packages/SOT96-1.html): ตัวอย่าง SO8 พร้อมภาพและแบบมิติ
+
+## หน่วยและมิติในการผลิต
+
+- [NIST: mil = 0.001 inch](https://www.nist.gov/glossary-term/40906)
+- [NIST: 1 inch = 25.4 mm](https://www.nist.gov/pml/owm/si-units-length)
+- [DigiKey DKRed Specifications](https://www.digikey.com/en/resources/dkred): ตัวอย่างขีดจำกัดการผลิตเฉพาะบริการ ไม่ใช่กฎของทุกบอร์ด
+- [JLCPCB Copper Weight Guide](https://jlcpcb.com/help/article/jlcpcb-copper-weight): copper weight และความหนาทองแดง ตรวจเงื่อนไขของบริการที่ใช้จริง
+
+## LDO และวงจรตัวอย่าง
+
+- [TI LM1117 datasheet](https://www.ti.com/lit/ds/symlink/lm1117.pdf): ตัวอย่างอ่านข้อมูลจากผู้ผลิต ไม่ใช้แทน datasheet ของ AMS1117 หรือ 1117 จากผู้ผลิตอื่น
+- [TI: Linear and LDO regulator basics](https://www.ti.com/video/series/learn-the-basics-of-linear-and-low-drop-out-regulators-ldos.html)
+- [Phil’s Lab #105: คำอธิบายและบทเวลา](https://fedevel.com/blog/ldo-regulator-hardware-design-phils-lab-105)
+- [Adafruit Adjustable Breadboard Power Supply](https://learn.adafruit.com/adjustable-breadboard-power-supply-kit): ตัวอย่างผลิตภัณฑ์/การประกอบ ไม่ใช้แทนข้อกำหนด LDO ของใบงาน
+- [คลิปประกอบแลป](videos.qmd): รายการ YouTube พร้อมบทบาทในการเรียน
+
+## การพัฒนาเว็บไซต์
+
+- [Quarto: GitHub Pages](https://quarto.org/docs/publishing/github-pages.html)
+- [GitHub: Custom workflows for Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
+- [AIoT for Beginners](https://vsupacha.github.io/aiot-for-beginners/) และ [CV for Beginners](https://vsupacha.github.io/cv-for-beginners/): รูปแบบบทเรียนภาษาไทยและแยกส่วนผู้สอน
+
+## ที่มาของเนื้อหา
+
+เรียบเรียงจากกรอบคอร์สที่หารือร่วมกันและสไลด์ PCB design workflow เดิม เนื้อหาต้นทางครอบคลุม PCB/PCBA, Arduino/ADC/RS-485, KiCad schematic/layout และการเตรียมผลิต นำมาแยกเป็นแลปพื้นฐานกับงานประยุกต์ตามเวลาเรียน
+
+เก็บสไลด์และประวัติการหารือไว้นอกชุดเว็บไซต์ ไม่มีการอ้างชื่อไฟล์ภายในเครื่องเป็นลิงก์ให้นักศึกษา วิดีโอและเอกสารภายนอกเปิดจากแหล่งต้นทาง สิทธิ์เป็นของเจ้าของแต่ละราย

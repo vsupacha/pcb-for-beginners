@@ -1,0 +1,52 @@
+---
+title: "คลิปประกอบแลป 1–3"
+subtitle: "ดูเพื่อทำ เข้าใจเหตุผล และตรวจผลงาน"
+---
+
+## วิธีใช้
+
+เลือกคลิปสำหรับบอร์ดแรกเพียงหนึ่งเส้นทาง รายการอื่นใช้เปิดทบทวนเฉพาะเรื่อง ดูเป็นช่วงแล้วหยุดลงมือทำ อย่าใช้เวลา 3 ชั่วโมงดูคลิปทั้งหมดจนไม่มีเวลาตรวจงาน
+
+รายการคัดกรองเมื่อ 19 ตุลาคม 2026 จากชื่อ คำอธิบาย บทเวลา และข้อมูลผู้จัดทำ ยังไม่ได้ทดลองทำตามทุกคลิปครบทุกขั้น ผู้สอนต้องทดลองกับ KiCad รุ่นที่ใช้ก่อนกำหนดเป็นสื่อบังคับ รายการนี้จึงไม่ใช่การรับรองความถูกต้องทุกขั้นในวิดีโอ
+
+## แลป 1: เห็น workflow
+
+| คลิป | บทบาท | สิ่งที่บทเรียนเสริม |
+|---|---|---|
+| [KiCad for Beginners: Step by Step Tutorial (2025)](https://www.youtube.com/watch?v=d9_-lQq8ShE) — DIY Hideout ตามข้อมูลช่องที่ตรวจ | ตัวเลือกตัวอย่างเริ่มต้น | จุดตรวจ schematic/footprint/net และ ERC/DRC |
+| [DigiKey KiCad 9: Part 1](https://www.youtube.com/watch?v=0WCi1rhueH4) | เตรียมเครื่องมือก่อนเรียน | จัดโฟลเดอร์งานของตนเอง |
+| [Part 2: Schematic Layout](https://www.youtube.com/watch?v=0Q6gU7-QqUg) | ทบทวน symbol และ net | ไล่ net ด้วยตนเอง |
+| [Part 4: Finishing the Schematic](https://www.youtube.com/watch?v=KN3fHXhNkTU) | label, power symbol และ ERC | อธิบายสาเหตุของข้อเตือน |
+| [Part 5: Assigning & Creating Custom Footprints](https://www.youtube.com/watch?v=4YSZwcUSgJo) | การจับคู่ footprint | ตรวจ pin-to-pad กับอุปกรณ์จริง |
+| [Part 6: Laying Out Your First PCB](https://www.youtube.com/watch?v=zdieFtrvjew) | placement/routing/zone/3D/DRC | กฎที่ใช้มีที่มาอย่างไร |
+
+[DigiKey playlist ทั้งชุด](https://www.youtube.com/playlist?list=PLEBQazB0HUyQ5YJSdCBb79orXaR3Uk5vm) ใช้ water alarm เป็นตัวอย่าง มีขั้นสร้าง symbol/footprint ที่อาจใช้เวลาเพิ่ม ต้องเตรียมส่วนเหล่านี้ก่อนหากข้ามตอน ไม่กำหนดให้ทำครบเจ็ดตอนในแลปแรก
+
+## แลป 2–3: เหตุผลของการออกแบบ LDO
+
+[LDO Regulator Hardware Design — Phil’s Lab #105](https://www.youtube.com/watch?v=_CHY8Z-fSa0) เป็นคลิปหลักการ มีบทเวลาที่[หน้าผู้จัดทำ FEDEVEL](https://fedevel.com/blog/ldo-regulator-hardware-design-phils-lab-105)
+
+| ช่วง | ใช้กับ | คำถามหลังดู |
+|---|---|---|
+| 03:04–09:31 เหตุผล/หลักการ LDO | แลป 2 | เหมาะกับโจทย์ของเราเพราะอะไร |
+| 09:31–10:58 กำลังสูญเสีย | แลป 2 | ได้ความร้อนกี่วัตต์จากเงื่อนไขใด |
+| 10:58–15:05 Datasheet | แลป 2 | typical กับ guaranteed limit ต่างกันอย่างไร |
+| 15:05–17:01 Capacitor | แลป 2 | ของที่เลือกตรงข้อกำหนดอุปกรณ์หรือไม่ |
+| 18:15–19:34 ตัวอย่าง | แลป 3 | วงจรตัวอย่างต่างจากโจทย์เราตรงไหน |
+| 19:34–25:47 Layout/routing | แลป 3 | ตำแหน่งอุปกรณ์และเส้นทางใดมีเหตุผลเฉพาะ |
+
+ใช้หลักการจากคลิป แต่ตรวจค่า capacitor, pinout, dropout และ thermal จาก datasheet ของอุปกรณ์ที่เลือกจริง การสาธิตเครื่องมือคนละโปรแกรมยังใช้วิเคราะห์หลักการได้ โดยทำขั้นตอนเครื่องมือใน KiCad ตามบทเรียน
+
+ในแลป 3 ใช้ DigiKey Part 6 ทบทวนเครื่องมือ และ[Part 7: Gerber และ BOM](https://www.digikey.com/en/videos/d/digi-key-electronics/kicad-90-getting-started-part-7-images-gerber-files-and-bom-digikey) เปิดจากหน้าผู้จัดทำเพื่อดูการเตรียมชุดส่งออก ไม่ต้องทำส่วนตกแต่งและสั่งซื้อ
+
+## คลิปเดิมที่เก็บเป็นตัวเลือกเสริม
+
+[Learn KiCAD10 in 7 steps — The Design Graveyard](https://www.youtube.com/watch?v=3NSjzMN1xyc) ใช้ ESP32-S3 development board จึงมีรายละเอียดวงจรมากกว่ากิจกรรมพื้นฐานของคอร์ส ใช้ดูภาพรวมตามบทเวลาผู้จัดทำ:
+
+- 01:04 schematic
+- 18:12 PCB จาก schematic
+- 22:42 tracks และ board setup
+- 26:10 DRC
+- 29:10 Gerber
+
+คลิปใช้ KiCad 10 ส่วนชุด DigiKey ใช้ KiCad 9 ให้เทียบหน้าที่ของคำสั่งเมื่อหน้าจอต่างกัน บทเรียนเพิ่มการคำนวณ trace width/clearance, net class, ทางกล และขอบเขตของการตรวจแยกจากคลิป

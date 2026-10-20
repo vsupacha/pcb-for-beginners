@@ -1,0 +1,13 @@
+body { line-height: 1.8; }
+h1, h2, h3, .title { font-weight: 600; }
+table { font-size: .94rem; }
+.callout { line-height: 1.75; }
+.course-path { border-left: 4px solid #167263; padding: .5rem 1rem; margin: 1.4rem 0; background: #f2f8f6; }
+details { margin: 1rem 0; padding: .6rem .9rem; border: 1px solid #d4dfdc; border-radius: 4px; }
+summary { cursor: pointer; font-weight: 600; }
+.footprint-table code { white-space: normal; overflow-wrap: anywhere; }
+@media print {
+  .quarto-sidebar, .quarto-secondary-nav, nav.navbar { display: none !important; }
+  details > * { display: block; }
+  a { color: inherit; }
+}

@@ -1,0 +1,31 @@
+---
+title: "แบบบันทึกงานและตาราง"
+---
+
+## แบบบันทึกแต่ละแลป
+
+ดาวน์โหลด PDF ขนาด A4 แลปละ 3 หน้า แล้วเปิดในแอปจดบันทึกบนแท็บเล็ต เขียนด้วยปากกาลงในช่องว่างหรือแทรกภาพประกอบได้ เพิ่มหน้าหากพื้นที่ไม่พอ จากนั้นบันทึกเป็น PDF ส่งพร้อมไฟล์โครงการตามที่ผู้สอนกำหนด
+
+| แลป | แบบบันทึก | สิ่งที่ต้องแนบ |
+|---|---|---|
+| 1 | [บอร์ดแรก (PDF)](../worksheets/lab01.pdf) | โครงการ ภาพสามมุมมอง และผลตรวจ |
+| 2 | [LDO schematic (PDF)](../worksheets/lab02.pdf) | schematic, BOM, คำนวณ และ pin-to-pad |
+| 3 | [LDO PCB (PDF)](../worksheets/lab03.pdf) | PCB, net rules, ผลตรวจ และ Gerber/drill |
+| 4 | [Arduino shield schematic (PDF)](../worksheets/lab04.pdf) | ข้อกำหนด schematic, BOM และ pin mapping |
+| 5 | [Arduino shield ส่งมอบแบบ (PDF)](../worksheets/lab05.pdf) | ชุดส่งมอบและแผนทดสอบ |
+
+## ตาราง CSV
+
+| ตาราง | ใช้เมื่อ | วิธีกรอก |
+|---|---|---|
+| [BOM](../templates/bom.csv) | แลป 2 และ 4 | ระบุ part/ผู้ผลิต/package/footprint และแหล่งข้อมูล |
+| [Net rules](../templates/net-rules.csv) | แลป 3 และ 5 | กระแส สมมติฐาน width, clearance และแหล่งอ้างอิง |
+| [Pin mapping](../templates/pin-mapping.csv) | แลป 4 | ใช้รุ่น Arduino และหมายเลข connector pad จริง |
+| [Test plan](../templates/test-plan.csv) | แลป 3 และ 5 | ระบุ input/โหลด เกณฑ์ผ่าน จุดวัด และเครื่องมือ |
+
+ช่องที่เว้นไว้ในตารางต้องเติมจากการออกแบบของตนเอง ไม่ใช่ค่าที่ตรวจพร้อมผลิตแล้ว ตาราง test plan เริ่มที่สถานะ planned และไม่มีผลวัดสมมติ
+
+::: {.callout-note}
+## ไฟล์ที่มีในฉบับนี้
+มีแบบบันทึก PDF สำหรับเขียนบนแท็บเล็ตและตาราง CSV สำหรับกรอกข้อมูลเพิ่มเติม ยังไม่มีโครงการ KiCad หรือ shield template ที่ตรวจแล้วแนบไว้
+:::

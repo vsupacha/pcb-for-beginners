@@ -1,0 +1,80 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - content/*.qmd
+  resources:
+    - worksheets/*.pdf
+    - templates/**
+
+website:
+  title: "PCB for Beginners"
+  site-url: https://vsupacha.github.io/pcb-for-beginners/
+  repo-url: https://github.com/vsupacha/pcb-for-beginners
+  navbar:
+    left:
+      - href: index.qmd
+        text: หน้าแรก
+      - href: content/00_setup.qmd
+        text: เริ่มเรียน
+      - text: แลป
+        menu:
+          - href: content/01_first_board.qmd
+          - href: content/02_ldo_schematic.qmd
+          - href: content/03_ldo_layout.qmd
+          - href: content/04_shield_schematic.qmd
+          - href: content/05_shield_layout.qmd
+      - href: content/downloads.qmd
+        text: แบบบันทึกงาน
+      - href: content/instructor.qmd
+        text: ผู้สอน
+    right:
+      - icon: github
+        href: https://github.com/vsupacha/pcb-for-beginners
+        aria-label: GitHub repository
+  sidebar:
+    style: docked
+    search: true
+    contents:
+      - index.qmd
+      - content/00_setup.qmd
+      - section: "เรียนและลงมือทำ"
+        contents:
+          - content/01_first_board.qmd
+          - content/02_ldo_schematic.qmd
+          - content/03_ldo_layout.qmd
+          - content/04_shield_schematic.qmd
+          - content/05_shield_layout.qmd
+      - section: "ค้นและทบทวน"
+        contents:
+          - content/concepts.qmd
+          - content/footprints.qmd
+          - content/glossary.qmd
+          - content/troubleshooting.qmd
+          - content/videos.qmd
+          - content/downloads.qmd
+          - content/references.qmd
+      - section: "สำหรับผู้สอน"
+        contents:
+          - content/instructor.qmd
+  page-footer:
+    center: "PCB for Beginners · ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยธรรมศาสตร์"
+
+format:
+  html:
+    theme: cosmo
+    lang: th
+    toc: true
+    toc-title: "ในหน้านี้"
+    code-copy: true
+    number-sections: false
+    smooth-scroll: true
+    html-math-method: katex
+    mainfont: "Noto Sans Thai, sans-serif"
+    monofont: "JetBrains Mono, monospace"
+    css: content/style.css
+
+author: "ผศ.ดร.ศุภชัย วรพจน์พิศุทธิ์"
+date: 2026-10-19
+date-format: long

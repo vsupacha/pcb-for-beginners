@@ -1,0 +1,6 @@
+Test_ID,Requirement_ID,Objective,Conditions,Input_or_load,Expected_result,Acceptance_limit,Test_point,Instrument,Actual_result,Status
+T01,,Assembly inspection,,,,,,,,planned
+T02,,Unpowered short check,,,,,,,,planned
+T03,,Power rails,,,,,,,,planned
+T04,,Primary function,,,,,,,,planned
+T05,,Operating range,,,,,,,,planned

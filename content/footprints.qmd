@@ -1,0 +1,95 @@
+---
+title: "Package และ footprint ที่พบบ่อย"
+subtitle: "รู้จัก 0402, 0603, SOIC-8 และอ่านข้อมูลให้ถึง pad จริง"
+---
+
+## เริ่มจาก package แล้วจึงเลือก footprint
+
+**Package** คือรูปร่างและขนาดของอุปกรณ์จริง ส่วน **footprint** คือแบบ pad และข้อมูลประกอบบน PCB สำหรับติดตั้งอุปกรณ์นั้น ชื่อ package ช่วยค้นหา แต่ต้องตรวจ part number, drawing และกระบวนการประกอบก่อนเลือกใช้
+
+ใช้หน้านี้ประกอบ[แลป 2](02_ldo_schematic.qmd) ขณะจับคู่ symbol กับ footprint และกลับมาตรวจอีกครั้งก่อนวางอุปกรณ์ใน[แลป 3](03_ldo_layout.qmd)
+
+## 1. ชิ้นส่วนสองขา: 0402, 0603, 0805 และ 1206
+
+ในตารางนี้ **0402/0603/0805/1206 ใช้ระบบ imperial** และแสดงชื่อ metric กำกับ ขนาดเป็นตัวอย่าง nominal ของตัวอุปกรณ์ ไม่ใช่ขนาด pad ที่ต้องวาดตามตัวเลขนี้ทันที
+
+| ชื่อ imperial | ชื่อ metric | ขนาดตัวอุปกรณ์โดยประมาณ (mm) | ภาพและ drawing |
+|---|---|---|---|
+| 0402 | 1005 | 1.0 × 0.5 | [Vishay: ภาพผลิตภัณฑ์](https://www.vishay.com/en/product/28700/) · [Datasheet และมิติ](https://www.vishay.com/doc/?28700=) |
+| 0603 | 1608 | 1.6 × 0.8 | [Vishay: ภาพผลิตภัณฑ์](https://www.vishay.com/en/product/28700/) · [Datasheet และมิติ](https://www.vishay.com/doc/?28700=) |
+| 0805 | 2012 | 2.0 × 1.25 | [Vishay: ภาพผลิตภัณฑ์](https://www.vishay.com/en/product/28700/) · [Datasheet และมิติ](https://www.vishay.com/doc/?28700=) |
+| 1206 | 3216 | 3.2 × 1.6 | [Vishay: ภาพผลิตภัณฑ์](https://www.vishay.com/en/product/28700/) · [Datasheet และมิติ](https://www.vishay.com/doc/?28700=) |
+
+หน้า Vishay และ datasheet ชุดเดียวกันครอบคลุมทั้งสี่ขนาด เปิดตารางและหัวข้อมิติเพื่อเปรียบเทียบตัวอุปกรณ์ ดูการเทียบชื่อเพิ่มเติมใน [KiCad Library Conventions](https://klc.kicad.org/)
+
+::: {.callout-important}
+## 0603 ไม่ได้บอกขนาดแน่นอนถ้าไม่รู้ระบบชื่อ
+0603 **imperial** คือกลุ่มขนาด 1.6 × 0.8 mm แต่ 0603 **metric** คือประมาณ 0.6 × 0.3 mm ซึ่งเทียบกับ 0201 imperial เช่นเดียวกัน 0402 metric กับ 0402 imperial เป็นคนละขนาด ต้องตรวจชื่อทั้งระบบและ drawing ใน BOM
+:::
+
+ตัวเลข imperial เป็นรหัสขนาด ไม่ควรแปลงตัวเลขในชื่อเป็น inch แบบตรงตัวเพื่อสร้าง pad ใช้มิติ nominal/tolerance และ recommended land pattern ของอุปกรณ์จริง
+
+### ข้อเสนอสำหรับคอร์สนี้
+
+- **0805 หรือ 1206:** เสนอเป็นจุดเริ่มต้นเมื่อจะฝึกจับชิ้นส่วนและบัดกรีด้วยมือ เพราะมีพื้นที่ให้ทำงานมากกว่าขนาดเล็ก ทั้งนี้ต้องตรงอุปกรณ์ที่หาได้
+- **0603:** ใช้ฝึกอ่านชื่อ library และจัด layout เมื่อมีความพร้อมด้านการประกอบ
+- **0402:** ให้รู้จักและเปรียบเทียบขนาดก่อน ไม่จำเป็นต้องบังคับใช้ในบอร์ดแรก
+
+นี่เป็นข้อเสนอจัดกิจกรรม ไม่ใช่มาตรฐานที่บังคับให้เลือกขนาดนั้น ค่า power rating, voltage rating, capacitance, ESR และ derating ต้องอ่านจาก part number จริง ไม่สรุปจากชื่อ 0603 อย่างเดียว
+
+## 2. IC และทรานซิสเตอร์: มองขาและมิติร่วมกัน
+
+| Package | จำแนกรูปร่างอย่างไร | สิ่งที่ต้องตรวจ | ลิงก์ที่มีภาพ/แบบมิติ |
+|---|---|---|---|
+| **SOT-23 แบบ 3 ขา** | ตัวเล็ก มีขาอยู่สองด้าน จำนวนขาแต่ละด้านไม่เท่ากัน | Pin numbering และหน้าที่ขา ไม่เดาว่าอุปกรณ์ทุกตัวเรียงขาเหมือนกัน | [Nexperia SOT23: ภาพ, package information และ 3D](https://www.nexperia.com/packages/SOT23.html) |
+| **SOT-223** | มีขาเล็กด้านหนึ่งและ tab ขนาดใหญ่อีกด้าน ใช้พบในอุปกรณ์ที่ต้องถ่ายเทความร้อน | Tab ต่อกับ net ใด ขนาด pad และข้อกำหนด thermal ของชิปจริง | [Nexperia SOT223: ภาพ, drawing และ 3D](https://www.nexperia.com/packages/SOT223) |
+| **SOIC-8 / SO8** | ตัวอย่างที่ใช้ดูมีขา 4 ขาต่อด้าน รวม 8 ขา | Pitch, body width/length, ระยะรวมขา, pin 1 และมี exposed pad หรือไม่ | [Nexperia SO8 / SOT96-1: ภาพและ drawing](https://www.nexperia.com/packages/SOT96-1.html) |
+| **Header 2.54 mm** | ขา through-hole เรียงเป็นแถว ใช้เชื่อมกับ breadboard หรือบอร์ดหลัก | จำนวนแถว/ขา, pitch, ความยาวขา, ด้านประกอบ และขนาดรู | [Samtec TSW: ภาพ, 3D, Prints and Footprints](https://www.samtec.com/products/tsw?3d=true) |
+
+ตัวอย่าง SO8 ของ Nexperia ในลิงก์มี body 4.9 × 3.9 mm และ pitch 1.27 mm แต่ **ชื่อ “8 ขา” หรือ “SOIC-8” อย่างเดียวไม่พอสำหรับเลือก footprint** มีรุ่นขนาดต่างกัน และ package อื่นที่มี 8 ขา เช่น TSSOP/MSOP/DIP ก็ไม่ได้ใช้ footprint เดียวกัน
+
+SOT-23-5 หรือ SOT-23-6 ก็ไม่ใช่ footprint SOT-23 แบบ 3 ขา แม้ชื่อกลุ่มคล้ายกัน ส่วน SOT-223 ต้องตรวจการนับ tab กับหมายเลข pad ตามชิปจริง ไม่ถือว่า tab เป็น GND เสมอ ตัวอย่าง [TI LM1117 datasheet](https://www.ti.com/lit/ds/symlink/lm1117.pdf) แสดงการต่อ tab ของตนเองให้ตรวจเทียบ
+
+## 3. ชื่อที่ใช้ค้นใน KiCad
+
+รายการต่อไปนี้เป็น **ตัวอย่างชื่อสำหรับค้นและตรวจต่อ** ไม่ใช่การยืนยันว่าใช้กับทุกชิ้นส่วนได้ ชื่อหรือรายการอาจต่างตามรุ่น library ให้เปิดดู footprint ที่ติดตั้งอยู่จริง
+
+::: {.footprint-table}
+| กลุ่ม | ตัวอย่างชื่อที่ค้น |
+|---|---|
+| Resistor 0402 | `Resistor_SMD:R_0402_1005Metric` |
+| Resistor 0603 | `Resistor_SMD:R_0603_1608Metric` |
+| Resistor 0805 | `Resistor_SMD:R_0805_2012Metric` |
+| Resistor 1206 | `Resistor_SMD:R_1206_3216Metric` |
+| Capacitor 0603 | `Capacitor_SMD:C_0603_1608Metric` |
+| SOT-23 แบบ 3 ขา | `Package_TO_SOT_SMD:SOT-23` |
+| SOT-223 ตัวอย่างที่ tab เป็น pin 2 | `Package_TO_SOT_SMD:SOT-223-3_TabPin2` |
+| SOIC-8 ตัวอย่าง body 3.9 × 4.9 mm, pitch 1.27 mm | `Package_SO:SOIC-8_3.9x4.9mm_P1.27mm` |
+| Header 1 แถว 2 ขา pitch 2.54 mm | `Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical` |
+:::
+
+แหล่งรายการชื่อจาก KiCad: [Resistor_SMD](https://kicad.github.io/footprints/Resistor_SMD.html), [Capacitor_SMD](https://kicad.github.io/footprints/Capacitor_SMD.html), [Package_TO_SOT_SMD](https://kicad.github.io/footprints/Package_TO_SOT_SMD.html), [Package_SO](https://kicad.github.io/footprints/Package_SO) และ [Header 2.54 mm](https://kicad.github.io/footprints/Connector_PinHeader_2.54mm.html)
+
+อ่านชื่อ `SOIC-8_3.9x4.9mm_P1.27mm` เป็น **กลุ่ม package + จำนวนขา + ขนาด body + pitch** ขนาด body ไม่ใช่ระยะจากปลายขาด้านหนึ่งถึงอีกด้าน ต้องเปิด drawing เพื่อตรวจระยะรวมและ land pattern อีกครั้ง
+
+### ชื่อ 0603 เหมือนกัน ไม่ได้หมายความว่าใช้ pad เดียวกันทุกอุปกรณ์
+
+เลือก library ให้ตรงประเภท เช่น `R_...` สำหรับ resistor กับ `C_...` สำหรับ capacitor และตรวจ drawing ขนาดปลาย terminal/ความสูงอาจต่างกัน ส่วน LED ต้องตรวจ polarity และ pin-to-pad เพิ่มแม้ใช้ชื่อขนาดเหมือนกัน
+
+บาง footprint มีคำว่า **HandSolder** ซึ่งหมายถึง variant ที่ปรับ pad สำหรับการบัดกรีด้วยมือ ไม่ได้ทำให้ตัวอุปกรณ์ใหญ่ขึ้น ต้องตรวจพื้นที่ การวางชิ้นส่วน และวิธีประกอบก่อนเลือกใช้
+
+## 4. ดูภาพอย่างไรให้เลือกแบบได้ถูก
+
+1. เปิด **ภาพหรือ 3D** เพื่อจำแนกรูปร่างและดูทิศทางเบื้องต้น
+2. เปิด **package outline drawing** อ่านหน่วย มุมมอง top/bottom, min/max, pitch, ขนาด body และระยะรวมขา
+3. หา **recommended land pattern** และเงื่อนไขการประกอบ ถ้ามี อย่านำ body size ไปวาดเป็น pad โดยตรง
+4. เปิด **Footprint Viewer/Editor** เทียบ pad size, หมายเลขขา, ระยะ, courtyard และ orientation
+5. ตรวจ **symbol pin → footprint pad → ขาจริง** แล้วบันทึกแหล่งอ้างอิงใน BOM/แบบบันทึก
+
+ภาพของผู้ผลิตในลิงก์ใช้ช่วยดูรูปร่าง ต้องเลือก part/variant ให้ตรงก่อนใช้ drawing ภาพ thumbnail หรือ 3D ที่สวยยังไม่ยืนยันความถูกต้องของ land pattern
+
+## กิจกรรมสั้นในแลป 2
+
+เลือก resistor หนึ่งตัวกับ IC หนึ่งตัว ทำตาราง **part number → package → body size/pitch → ชื่อ footprint → แหล่งภาพ/drawing → ผลตรวจ pin-to-pad** แล้วตอบว่าทำไม footprint ที่ชื่อใกล้กันอีกหนึ่งตัวจึงใช้แทนไม่ได้
+
+ใช้ช่อง “pin-to-pad และมิติ” ใน[แบบบันทึกแลป 2 PDF](../worksheets/lab02.pdf) หรือเพิ่มหน้าแนบ เมื่อลง layout ให้ตรวจพื้นที่จริงต่อใน[แลป 3](03_ldo_layout.qmd)
